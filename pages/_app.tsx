@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="description"
           content={`Template from moh3a's GitHub repository`}
         />
-        {/* <meta name="theme-color" content="#1b1f23" /> */}
+        <meta name="theme-color" content="#1b1f23" />
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
