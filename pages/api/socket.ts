@@ -12,6 +12,7 @@ handler.use((req: NextApiRequest, res: NextApiResponse | any) => {
     res.socket.server.io = io;
 
     io.on("connection", (socket) => {
+      socket.broadcast.emit("connected");
       socket.on("input-change", (msg) => {
         socket.broadcast.emit("update-input", msg);
       });

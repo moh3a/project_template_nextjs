@@ -1,41 +1,18 @@
-import React, { useCallback, useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import { useTranslations } from "next-intl";
-import axios from "axios";
-import io, { Socket } from "socket.io-client";
 
 import SelectLocale from "../components/SelectLocale";
 import WebSocket from "../components/WebSocket";
 import SessionSection from "../components/SessionSection";
-import { DefaultEventsMap } from "@socket.io/component-emitter";
-let socket: Socket<DefaultEventsMap, DefaultEventsMap>;
 
 const HomeScreen = () => {
   const t = useTranslations("HomeScreen");
-  const [input, setInput] = useState("");
-
-  const socketInitializer = useCallback(async () => {
-    await axios.post("/api/socket");
-    socket = io();
-
-    socket.on("connection", () => {
-      console.log("client connected!");
-    });
-
-    socket.on("update-input", (msg) => {
-      setInput(msg);
-    });
-  }, []);
-
-  useEffect(() => {
-    socketInitializer();
-  }, [socketInitializer]);
 
   return (
     <div style={{ padding: "0 2rem" }}>
       <h1>{t("hello")}</h1>
       <SessionSection />
-      <WebSocket socket={socket} input={input} setInput={setInput} />
+      <WebSocket />
       <SelectLocale />
       <h2>This app is a PWA</h2>
       <p>
@@ -46,7 +23,7 @@ const HomeScreen = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       messages: require(`../locales/Home/${locale}.json`),
