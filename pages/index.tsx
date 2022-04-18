@@ -9,16 +9,14 @@ const HomeScreen = () => {
   const t = useTranslations("HomeScreen");
 
   return (
-    <div style={{ padding: "0 2rem" }}>
-      <h1>{t("hello")}</h1>
+    <div className="container px-2 py-4">
+      <h1 className="bg-clip-text text-4xl font-bold text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+        {t("hello")}
+      </h1>
       <SessionSection />
       <WebSocket />
       <SelectLocale />
-      <h2>This app is a PWA</h2>
-      <p>
-        it means that althogh it is on the web, it can be installed on your
-        windows or your android.
-      </p>
+      <TemplateFeatures />
     </div>
   );
 };
@@ -32,6 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 
 import Layout from "../components/layout/Layout";
+import TemplateFeatures from "../components/TemplateFeatures";
 HomeScreen.getLayout = function getLayout(page: any) {
   return <Layout>{page}</Layout>;
 };

@@ -31,7 +31,9 @@ const SelectLocale = () => {
 
   return (
     <div>
-      <h2>It has locale (Internationalization) configured.</h2>
+      <h2 className="text-xl font-bold">
+        It has locale (Internationalization) configured.
+      </h2>
       {languages.map((language, idx) => (
         <Fragment key={idx}>
           <Link href={router.asPath} locale={language.locale} passHref>

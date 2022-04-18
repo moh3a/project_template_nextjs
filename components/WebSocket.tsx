@@ -53,7 +53,9 @@ const WebSocket = () => {
 
   return (
     <>
-      <h2>Out of the box works with WebSockets</h2>
+      <h2 className="text-xl font-bold">
+        Out of the box works with WebSockets
+      </h2>
       <p>Open multiple instances to see the content of input field sync up.</p>
       {isConnected ? (
         <p style={{ color: "green" }}>ur connected</p>

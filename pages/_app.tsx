@@ -1,9 +1,10 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { NextPage } from "next";
+import Head from "next/head";
 import { NextIntlProvider } from "next-intl";
 import { SessionProvider } from "next-auth/react";
-import Head from "next/head";
+import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const getLayout = (Component as any).getLayout || ((page: NextPage) => page);
@@ -27,9 +28,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <NextIntlProvider messages={pageProps.messages}>
-        <SessionProvider session={pageProps.session}>
-          {getLayout(<Component {...pageProps} />)}
-        </SessionProvider>
+        <ThemeProvider attribute="class">
+          <SessionProvider session={pageProps.session}>
+            {getLayout(<Component {...pageProps} />)}
+          </SessionProvider>
+        </ThemeProvider>
       </NextIntlProvider>
     </>
   );
