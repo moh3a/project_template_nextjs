@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import io, { Socket } from "socket.io-client";
 import { DefaultEventsMap } from "@socket.io/component-emitter";
 import axios from "axios";
+import LoadingSpinner from "./LoadingSpinner";
 
 let socket: Socket<DefaultEventsMap, DefaultEventsMap>;
 
@@ -60,7 +61,9 @@ const WebSocket = () => {
       {isConnected ? (
         <p style={{ color: "green" }}>ur connected</p>
       ) : (
-        <p style={{ color: "red" }}>ur not connected</p>
+        <p style={{ color: "red" }}>
+          <LoadingSpinner /> ur not connected
+        </p>
       )}
       <input
         placeholder="type something"

@@ -6,8 +6,9 @@ import { NextIntlProvider } from "next-intl";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   const getLayout = (Component as any).getLayout || ((page: NextPage) => page);
+
   return (
     <>
       <Head>

@@ -10,7 +10,6 @@
 ### TODO
 
 - add basic auth workflow
-- add next pages transistions
 - fix redundant websockets emissions from mongodb.watch
 
 ##### next-build page optimization output:
