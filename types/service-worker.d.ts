@@ -83,9 +83,13 @@ interface SyncEvent extends ExtendableEvent {
   tag: string;
 }
 
+interface CustomObject extends Object {
+  url: string;
+}
+
 interface ExtendableMessageEvent extends ExtendableEvent {
   data: any;
-  source: Client | Object;
+  source: Client | CustomObject;
 }
 
 // ServiceWorkerGlobalScope

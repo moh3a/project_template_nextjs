@@ -11,6 +11,9 @@
 
 - add basic auth workflow
 - fix redundant websockets emissions from mongodb.watch
+- npm web-push
+- npm node-schedule - cron jobs
+- window API online -> basic implementation in \_app.tsx
 
 ##### next-build page optimization output:
 
